@@ -1,0 +1,12 @@
+# environment variables
+src/environments/environment.prod.ts
+src/environments/environment.ts
+
+# node_modules
+node_modules
+
+# package-lock.json
+package-lock.json
+
+# .env
+.env

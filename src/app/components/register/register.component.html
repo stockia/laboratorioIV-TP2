@@ -1,0 +1,180 @@
+<div class="container d-flex h-100 p-3 mx-auto flex-column register-form">
+	<main>
+		<div class="py-5 text-center">
+			<h2>Formulario de Registro</h2>
+			<p class="lead">Seleccione el tipo de entidad a registrar:</p>
+			<div class="image-selection">
+				<img src="https://i.imgur.com/JlFftcd.jpeg" 
+					alt="Paciente" (click)="selectEntity('patient')" 
+					[ngClass]="[
+						'mx-2',
+						'entity-image',
+						isPatient === true ? '' : 'unselected-entity'
+					]"
+				/>
+				<img src="https://i.imgur.com/AkPKerI.jpeg" 
+					alt="Especialista" (click)="selectEntity('specialist')" 
+					[ngClass]="[
+						'mx-2',
+						'entity-image',
+						isSpecialist === true ? '' : 'unselected-entity'
+					]"
+				/>
+			</div>
+			<p class="lead">Haga clic en la imagen correspondiente para continuar.</p>
+		</div>
+
+		@if (entitySelected) {
+			<form class="needs-validation" [formGroup]="registerForm" (ngSubmit)="register()">
+				<div class="row g-3">
+					<!-- inicio nombre -->
+					<div class="col-sm-6">
+						<label for="firstName" class="form-label">Nombre</label>
+						<input type="text" class="form-control" id="firstName" formControlName="nombre">
+						@if (registerForm.get('nombre')?.errors?.['required'] && registerForm.get('nombre')?.touched) {
+							<small class="text-danger">
+								El campo es requerido
+							</small>
+						} @else if (registerForm.get('nombre')?.errors?.['invalidName'] && registerForm.get('nombre')?.touched) {
+							<small class="text-danger">
+								{{ getFirstNameErrorMessage() }}
+							</small>
+						}
+					</div>
+					<!-- fin nombre -->
+
+					<!-- inicio apellido -->
+					<div class="col-sm-6">
+						<label for="lastName" class="form-label">Apellido</label>
+						<input type="text" class="form-control" id="lastName" formControlName="apellido">
+						@if (registerForm.get('apellido')?.errors?.['required'] && registerForm.get('apellido')?.touched) {
+							<small class="text-danger">
+								El campo es requerido
+							</small>
+						} @else if (registerForm.get('apellido')?.errors?.['invalidName'] && registerForm.get('apellido')?.touched) {
+							<small class="text-danger">
+								{{ getLastNameErrorMessage() }}
+							</small>
+						}
+					</div>
+					<!-- fin apellido -->
+
+					<!-- inicio edad -->
+					<div class="col-sm-6">
+						<label for="age" class="form-label">Edad</label>
+						<input type="number" class="form-control" id="age" formControlName="edad">
+						@if (registerForm.get('edad')?.errors?.['required'] && registerForm.get('edad')?.touched) {
+							<small class="text-danger">
+								El campo es requerido
+							</small>
+						} @else if (registerForm.get('edad')?.errors?.['invalidAge'] && registerForm.get('edad')?.touched) {
+							<small class="text-danger">
+								{{ getAgeErrorMessage() }}
+							</small>
+						}
+					</div>
+					<!-- fin edad -->
+
+					<!-- inicio dni -->
+					<div class="col-sm-6">
+						<label for="dni" class="form-label">DNI</label>
+						<input type="text" class="form-control" id="dni" formControlName="dni">
+						@if (registerForm.get('dni')?.errors?.['required'] && registerForm.get('dni')?.touched) {
+							<small class="text-danger">
+								El campo es requerido
+							</small>
+						} @else if (registerForm.get('dni')?.errors?.['invalidId'] && registerForm.get('dni')?.touched) {
+							<small class="text-danger">
+								{{ getIdErrorMessage() }}
+							</small>
+						}
+					</div>
+					<!-- fin dni -->
+
+					@if (isPatient) {
+						<!-- inicio obra social -->
+						<div class="col-12">
+							<label for="healthInsurance" class="form-label">Obra Social</label>
+							<input type="text" class="form-control" id="healthInsurance" formControlName="obraSocial">
+						</div>
+						@if (registerForm.get('obraSocial')?.errors?.['required'] && registerForm.get('obraSocial')?.touched) {
+							<small class="text-danger">
+								El campo es requerido
+							</small>
+						} @else if (registerForm.get('obraSocial')?.errors?.['invalidHealthInsurance'] && registerForm.get('obraSocial')?.touched) {
+							<small class="text-danger">
+								{{ getHealthInsuranceErrorMessage() }}
+							</small>
+						}
+					}
+						<!-- fin obra social -->
+					@if (isSpecialist) {
+						<!-- inicio especialidad -->
+						<div class="col-12">
+							<label for="specialty" class="form-label">Especialidad</label>
+							<input type="text" class="form-control" id="specialty" formControlName="especialidad">
+						</div>
+						@if (registerForm.get('especialidad')?.errors?.['required'] && registerForm.get('especialidad')?.touched) {
+							<small class="text-danger">
+								El campo es requerido
+							</small>
+						} @else if (registerForm.get('especialidad')?.errors?.['invalidSpecialty'] && registerForm.get('especialidad')?.touched) {
+							<small class="text-danger">
+								{{ getSpecialtyErrorMessage() }}
+							</small>
+						}
+						<!-- fin especialidad -->
+					}
+					<!-- inicio email -->
+					<div class="col-12">
+						<label for="email" class="form-label">Email</label>
+						<input type="email" class="form-control" id="email" formControlName="mail">
+						@if (registerForm.get('mail')?.errors?.['required'] && registerForm.get('mail')?.touched) {
+							<small class="text-danger">
+								El campo es requerido
+							</small>
+						}
+					</div>
+					<!-- fin email -->
+
+					<!-- inicio contraseña -->
+					<div class="col-12">
+						<label for="password" class="form-label">Contraseña</label>
+						<input type="password" class="form-control" id="password" formControlName="contrasena">
+						@if (registerForm.get('contrasena')?.errors?.['required'] && registerForm.get('contrasena')?.touched) {
+							<small class="text-danger">
+								El campo es requerido
+							</small>
+						} @else if (registerForm.get('contrasena')?.errors?.['invalidPassword'] && registerForm.get('contrasena')?.touched) {
+							<small class="text-danger">
+								{{ getPasswordErrorMessage() }}
+							</small>
+						}
+					</div>
+					<!-- fin contraseña -->
+
+					@if (isPatient) {
+						<!-- inicio imagenes de perfil -->
+						<div class="col-12">
+							<label for="profileImages" class="form-label">Imágenes de perfil</label>
+							<input type="file" class="form-control" id="profileImages" multiple formControlName="imagenesPerfil">
+						</div>
+						<!-- fin imagenes de perfil -->
+					}
+					@if (isSpecialist) {
+						<!-- inicio imagen de perfil -->
+						<div class="col-12">
+							<label for="profileImage" class="form-label">Imagen de perfil</label>
+							<input type="file" class="form-control" id="profileImage" formControlName="imagenPerfil">
+						</div>
+						<!-- fin imagen de perfil -->
+					}
+				</div>
+				<button class="w-100 btn btn-primary btn-lg mt-3">Registrar</button>
+				@if (formError) {
+					<p class="text-danger">Verifique los campos requeridos</p>
+				}
+			</form>
+		}
+	</main>
+</div> 

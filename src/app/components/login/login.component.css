@@ -1,0 +1,93 @@
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.entity-image {
+    max-width: 100px;
+    /* border-radius: 15px; */
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.quick-access {
+  display: flex;
+  flex-direction: column; /* Alinea los botones uno debajo del otro */
+  position: absolute; /* Permite posicionar el contenedor */
+  right: 20px; /* Ajusta la distancia desde el borde derecho */
+  top: 50%; /* Centra verticalmente */
+  transform: translateY(-50%); /* Ajusta el centrado */
+  z-index: 1; /* Asegura que esté por encima de otros elementos */
+}
+
+.btn-square {
+  display: flex; /* Permite alinear el texto y la imagen */
+  align-items: center; /* Centra verticalmente el texto y la imagen */
+  border-radius: 10px; /* Bordes redondeados */
+  width: 150px; /* Ancho del botón */
+  height: 50px; /* Alto del botón */
+  margin-bottom: 10px; /* Espacio entre botones */
+  border: none; /* Sin borde */
+  background-color: transparent; /* Fondo transparente */
+  padding: 0; /* Sin padding */
+}
+
+.username {
+  margin-right: 1.7rem; /* Espacio entre el texto y la imagen */
+  max-width: 80px; /* Ancho máximo para el nombre de usuario */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el texto que se desborda */
+  text-overflow: ellipsis; /* Muestra "..." para indicar que hay más texto */
+}
+
+.user-type {
+  display: block; /* Hace que el span ocupe toda la línea */
+  font-size: 12px; /* Tamaño de fuente más pequeño */
+  color: #aaa; /* Color gris claro */
+  margin-top: 2px; /* Espacio entre el nombre y el tipo de usuario */
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 1.7rem; /* Espacio entre el texto y la imagen */
+  max-width: 80px; /* Ancho máximo para el nombre de usuario */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el texto que se desborda */
+  text-overflow: ellipsis; /* Muestra "..." para indicar que hay más texto */
+}
+
+.btn-square img {
+  width: 50px; /* Imagen ocupa todo el botón */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 10px; /* Bordes redondeados para la imagen */
+}

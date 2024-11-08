@@ -1,0 +1,16 @@
+.container {
+    max-width: 960px;
+}
+
+.entity-image {
+    max-width: 200px;
+    border-radius: 15px;
+}
+
+.register-form {
+    margin-bottom: 10rem;
+}
+
+.unselected-entity {
+    filter: grayscale(100%);
+}
